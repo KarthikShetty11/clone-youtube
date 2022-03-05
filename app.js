@@ -7,9 +7,9 @@ let channel_http = "https://www.googleapis.com/youtube/v3/channels?";
 fetch(video_http + new URLSearchParams({
     key: api_key,
     part: 'snippet',
-    chart:'mostPopular',
-    maxResults: 100,
-    regionCode: 'IN'
+    chart: 'mostPopular',
+    maxResults: 10,
+    regionCode: 'US'
 }))
 .then(res => res.json())
 .then(data => {
@@ -51,9 +51,6 @@ const makeVideoCard = (data) => {
 
 const searchInput = document.querySelector('.search-bar');
 const searchBtn = document.querySelector('.search-btn');
-
-const filteroptions = document.querySelector('.filter-options');
-
 let searchLink = "https://www.youtube.com/results?search_query=";
 
 searchBtn.addEventListener('click', () => {
@@ -62,6 +59,9 @@ searchBtn.addEventListener('click', () => {
     }
 })
 
-filteroptions.addEventListener('click', () => {
-location.href = searchLink + filteroptions.value;
+
+const filterOptions = document.querySelector('.filter-options');
+
+filterOptions.addEventListener('click', () => {
+location.href = searchLink + filterOptions.value;
 })
