@@ -1,6 +1,6 @@
 const videoCardContainer = document.querySelector('.video-container');
 
-let api_key = "AIzaSyC1K6M4AAEKT-4FqjUj88BqpQBUAZNNa-Y";
+let api_key = "AIzaSyAsf0sNMEKhX4KrwG0YNDFv-_TBtiDQhIw";
 let video_http = "https://www.googleapis.com/youtube/v3/videos?";
 let channel_http = "https://www.googleapis.com/youtube/v3/channels?";
 
@@ -8,9 +8,10 @@ fetch(video_http + new URLSearchParams({
     key: api_key,
     part: 'snippet',
     chart: 'mostPopular',
-    maxResults: 10,
-    regionCode: 'US'
+    maxResults: 100,
+    regionCode:'US'
 }))
+
 .then(res => res.json())
 .then(data => {
     data.items.forEach(item => {
